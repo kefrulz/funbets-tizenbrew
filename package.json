@@ -4,7 +4,7 @@
   "description": "FunBets Arcade launcher for TizenBrew",
   "packageType": "app",
   "appName": "FunBets",
-  "appPath": "app/index.html",
+  "appPath": "app/funbets.html",
   "keys": [
     "ArrowLeft",
     "ArrowRight",
