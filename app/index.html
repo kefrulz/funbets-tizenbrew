@@ -17,17 +17,37 @@
       cursor: none;
     }
 
-    main {
+    iframe {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #050505;
+    }
+
+    .fallback {
       position: fixed;
       inset: 0;
       display: grid;
       place-items: center;
+      text-align: center;
+      background: #050505;
+      z-index: 2;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
     }
 
-    section {
+    .fallback.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .panel {
       display: grid;
       gap: 18px;
-      text-align: center;
+      padding: 40px;
     }
 
     h1 {
@@ -42,32 +62,79 @@
       color: #b7ac9f;
       font-size: 24px;
     }
+
+    button {
+      justify-self: center;
+      height: 64px;
+      border: 2px solid #d7a845;
+      border-radius: 8px;
+      padding: 0 28px;
+      background: #d7a845;
+      color: #17130c;
+      font-size: 24px;
+      font-weight: 900;
+    }
   </style>
 </head>
 <body>
-  <main>
-    <section>
+  <iframe id="funbets" title="FunBets Arcade" allow="fullscreen; geolocation"></iframe>
+
+  <main id="fallback" class="fallback">
+    <section class="panel">
       <h1>FunBets</h1>
-      <p>Opening arcade...</p>
+      <p>Press OK to open the arcade.</p>
+      <button id="open" type="button">Open FunBets</button>
     </section>
   </main>
 
   <script>
     var target = "https://cas.oqyb-drtbrt-aux2.online/?tv=1&app=tizenbrew";
+    var frame = document.getElementById("funbets");
+    var fallback = document.getElementById("fallback");
+    var openButton = document.getElementById("open");
 
     function launch() {
-      location.replace(target);
+      try {
+        window.open(target, "_self");
+      } catch (error) {
+        location.href = target;
+      }
+    }
+
+    function showFallback() {
+      fallback.classList.add("show");
+      openButton.focus();
+    }
+
+    function focusFrame() {
+      try {
+        frame.focus();
+        frame.contentWindow.focus();
+      } catch (error) {
+        frame.focus();
+      }
     }
 
     document.addEventListener("keydown", function (event) {
       var code = event.keyCode || event.which;
       if (event.key === "Enter" || event.key === "OK" || code === 13 || code === 29443) {
-        event.preventDefault();
-        launch();
+        if (fallback.classList.contains("show")) {
+          event.preventDefault();
+          launch();
+        }
       }
     }, true);
 
-    setTimeout(launch, 250);
+    openButton.addEventListener("click", launch);
+    frame.addEventListener("load", function () {
+      fallback.classList.remove("show");
+      setTimeout(focusFrame, 100);
+      setTimeout(focusFrame, 700);
+    });
+
+    frame.src = target;
+    setTimeout(focusFrame, 300);
+    setTimeout(showFallback, 7000);
   </script>
 </body>
 </html>
