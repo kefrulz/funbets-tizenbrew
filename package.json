@@ -1,0 +1,20 @@
+{
+  "name": "funbets-arcade-tizenbrew",
+  "version": "1.0.0",
+  "description": "FunBets Arcade launcher for TizenBrew",
+  "packageType": "app",
+  "appName": "FunBets",
+  "appPath": "app/index.html",
+  "keys": [
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowUp",
+    "ArrowDown",
+    "Enter",
+    "Return",
+    "Exit",
+    "ColorF0Red",
+    "ColorF3Blue"
+  ],
+  "evaluateScriptOnDocumentStart": false
+}

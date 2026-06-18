@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FunBets</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #050505;
+      color: #f7f2e8;
+      font-family: Arial, sans-serif;
+      cursor: none;
+    }
+
+    main {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+    }
+
+    section {
+      display: grid;
+      gap: 18px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      color: #d7a845;
+      font-size: 64px;
+      line-height: 1;
+    }
+
+    p {
+      margin: 0;
+      color: #b7ac9f;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section>
+      <h1>FunBets</h1>
+      <p>Opening arcade...</p>
+    </section>
+  </main>
+
+  <script>
+    var target = "https://cas.oqyb-drtbrt-aux2.online/?tv=1&app=tizenbrew";
+
+    function launch() {
+      location.replace(target);
+    }
+
+    document.addEventListener("keydown", function (event) {
+      var code = event.keyCode || event.which;
+      if (event.key === "Enter" || event.key === "OK" || code === 13 || code === 29443) {
+        event.preventDefault();
+        launch();
+      }
+    }, true);
+
+    setTimeout(launch, 250);
+  </script>
+</body>
+</html>
