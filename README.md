@@ -6,7 +6,7 @@ FunBets Arcade launcher module for TizenBrew on Samsung TVs.
 
 If installed from TizenBrew's GitHub module screen, add this exact value:
 
-`kefrulz/funbets-tizenbrew@v1.0.1`
+`kefrulz/funbets-tizenbrew@1.0.1`
 
 Do not type the `gh/` prefix yourself on the GitHub module screen. TizenBrew adds that internally.
 
